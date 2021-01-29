@@ -58,12 +58,14 @@ class Game{
                 fill("black");
                 textSize(25);
                 text(allPlayers[plr].name ,x-25,y+25); 
+
+                textSize(25);
+                fill(255);
+                text(allPlayers.player1.name+" : "+allPlayers.player1.score,50,50);
+                text(allPlayers.player2.name+" : "+allPlayers.player2.score,50,100);
             }
-           textSize(25);
-           fill(255);
-           text(allPlayers[plr].name+" : "+allPlayers.player1.score,50,50);
-           text(allPlayers[plr].name+" : "+allPlayers.player2.score,50,100);
-        }
+          
+        }      
 
         if (keyIsDown(RIGHT_ARROW) && player.index !== null) {
             player.distance -= 10
@@ -103,13 +105,17 @@ class Game{
               }
             }
           }
+
+          if(player.score>=10){
+              this.end();
+          }
     }
 
     end(){
-
-       // Add code to update game state and display Game Over
-
-
-       
+        game.update(2);
+        clear();
+        fill(0,0,255);
+        textSize(40);
+        text("Game Over",350,300);
     }
 }
